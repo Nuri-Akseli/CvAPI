@@ -14,5 +14,12 @@ namespace CvAPI.Persistence.Repositories.UserRepositories
         public UserWriteRepository(CvAPIDbContext context):base(context)
         {
         }
+
+        public bool UpdateRefreshToken(string refreshToken, User user, DateTime expiresTime)
+        {
+            user.RefreshToken = refreshToken;
+            user.RefreshTokenEndDate=expiresTime;
+            return Update(user);
+        }
     }
 }

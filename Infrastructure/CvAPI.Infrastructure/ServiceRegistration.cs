@@ -1,5 +1,7 @@
-﻿using CvAPI.Application.Abstractions.Storage;
+﻿using CvAPI.Application.Abstractions.AccessToken;
+using CvAPI.Application.Abstractions.Storage;
 using CvAPI.Infrastructure.Services.Storage;
+using CvAPI.Infrastructure.Services.Token;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -13,6 +15,8 @@ namespace CvAPI.Infrastructure
     {
         public static void AddInfrastructureServices(this IServiceCollection serviceCollection)
         {
+            serviceCollection.AddScoped<IStorageService, StorageService>();
+            serviceCollection.AddScoped<ITokenHandler,TokenHandler>();
 
         }
         public static void AddStorage<T>(this IServiceCollection serviceCollection)

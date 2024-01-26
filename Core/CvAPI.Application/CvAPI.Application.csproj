@@ -19,8 +19,4 @@
     <ProjectReference Include="..\CvAPI.Domain\CvAPI.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Commands\" />
-  </ItemGroup>
-
 </Project>

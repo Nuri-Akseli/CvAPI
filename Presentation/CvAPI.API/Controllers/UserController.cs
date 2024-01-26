@@ -2,12 +2,14 @@
 using CvAPI.Application.Features.Queries.User.GetUserById;
 using CvAPI.Application.Repositories.UserRepositories;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CvAPI.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes ="Admin")]
     public class UserController : ControllerBase
     {
 
@@ -28,5 +30,7 @@ namespace CvAPI.API.Controllers
             GetUserByIdResponse response = await _mediator.Send(getUserByIdRequest);
             return Ok(response);
         }
+
+        
     }
 }

@@ -4,6 +4,7 @@ using SendGrid.Helpers.Errors.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Authentication;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -53,7 +54,9 @@ namespace CvAPI.Application.Exceptions
                 BadRequestException=>StatusCodes.Status400BadRequest,
                 NotFoundException=>StatusCodes.Status400BadRequest,
                 ValidationException=>StatusCodes.Status422UnprocessableEntity,
+                ForbiddenException=>StatusCodes.Status403Forbidden,
                 NullReferenceException=>StatusCodes.Status400BadRequest,
+                AuthenticationException=>StatusCodes.Status400BadRequest,
                 _=>StatusCodes.Status500InternalServerError
             };
         }

@@ -9,5 +9,6 @@ namespace CvAPI.Application.Repositories.UserRepositories
 {
     public interface IUserWriteRepository:IWriteRepository<User>
     {
+        bool UpdateRefreshToken(string refreshToken, User user, DateTime expiresTime);
     }
 }
