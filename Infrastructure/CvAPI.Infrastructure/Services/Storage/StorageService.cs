@@ -38,5 +38,10 @@ namespace CvAPI.Infrastructure.Services.Storage
         {
             return _storage.UploadAsync(pathOrContainerName, files);
         }
+
+        public Task<(string fileName, string path)> UploadSingleAsync(string path, IFormFile file)
+        {
+            return _storage.UploadSingleAsync(path, file);
+        }
     }
 }

@@ -41,13 +41,32 @@ namespace CvAPI.Infrastructure.Services.Storage.Local
             List<(string fileName, string path)> datas = new();
             foreach (IFormFile file in files)
             {
-                string fileNewName = await FileRenameAsync(path, file.Name, HasFile);
+                string fileNewName = await FileRenameAsync(path, file.FileName, HasFile);
                 await CopyFileAsync($"{uploadPath}\\{fileNewName}", file);
 
                 datas.Add((fileNewName, $"{path}\\{fileNewName}"));
             }
 
             return datas;
+        }
+        public async Task<(string fileName, string path)> UploadSingleAsync(string path, IFormFile file)
+        {
+            string uploadPath = Path.Combine(_webHostEnvironment.WebRootPath, path);
+
+            if (!Directory.Exists(uploadPath))
+            {
+                Directory.CreateDirectory(uploadPath);
+            }
+            (string fileName, string path) data = new();
+            
+            string fileNewName = await FileRenameAsync(path, file.FileName, HasFile);
+            await CopyFileAsync($"{uploadPath}\\{fileNewName}", file);
+
+            data.fileName = fileNewName;
+            data.path = $"{uploadPath}\\";
+
+
+            return data;
         }
 
         private async Task<bool> CopyFileAsync(string path, IFormFile file)
