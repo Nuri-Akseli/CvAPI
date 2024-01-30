@@ -13,5 +13,6 @@ namespace CvAPI.Domain.Entities
         public string Name { get; set; }
         public string? FlagPath { get; set; }
         public string? FlagFileName { get; set; }
+        public ICollection<CvInformation> CvInformations { get; set; }
     }
 }
