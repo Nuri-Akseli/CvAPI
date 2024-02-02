@@ -18,7 +18,6 @@ namespace CvAPI.Application.Features.Commands.Language.UpdateActivity
                 .WithName("Id");
 
             RuleFor(language => language.Activity)
-                .NotEmpty()
                 .NotNull()
                 .WithName("Aktiflik");
         }

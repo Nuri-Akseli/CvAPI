@@ -19,7 +19,6 @@ namespace CvAPI.Application.Features.Commands.CvInformation.UpdateActivity
 
             RuleFor(cvInfo => cvInfo.Activity)
                 .NotNull()
-                .NotEmpty()
                 .WithName("Aktiflik");
         }
     }
