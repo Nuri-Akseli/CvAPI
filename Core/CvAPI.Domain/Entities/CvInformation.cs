@@ -15,5 +15,7 @@ namespace CvAPI.Domain.Entities
         public string? ImageName { get; set; }
         public int LanguageId { get; set; }
         public Language Language { get; set; }
+
+        public ICollection<CvPart> CvParts { get; set; }
     }
 }
