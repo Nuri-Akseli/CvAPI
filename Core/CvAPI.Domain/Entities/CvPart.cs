@@ -15,6 +15,8 @@ namespace CvAPI.Domain.Entities
         public string? IconPath { get; set; }
         public string? IconName { get; set; }
         public int Order { get; set; }
-        public bool IsContactInfo { get; set; } 
+        public bool IsContactInfo { get; set; }
+
+        public ICollection<GeneralArticle> GeneralArticles { get; set; }
     }
 }

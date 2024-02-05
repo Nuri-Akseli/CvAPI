@@ -13,6 +13,7 @@ namespace CvAPI.Persistence.Contexts
         public DbSet<Language> Languages { get; set; }
         public DbSet<CvInformation> CvInformations { get; set; }
         public DbSet<CvPart> CvParts { get; set; }
+        public DbSet<GeneralArticle> GeneralArticles { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
