@@ -1,11 +1,13 @@
 ﻿using CvAPI.Application.Repositories.CvInformationRepositories;
 using CvAPI.Application.Repositories.CvPartRepositories;
+using CvAPI.Application.Repositories.EducationRepositories;
 using CvAPI.Application.Repositories.GeneralArticleRepositories;
 using CvAPI.Application.Repositories.LanguageRepositories;
 using CvAPI.Application.Repositories.UserRepositories;
 using CvAPI.Persistence.Contexts;
 using CvAPI.Persistence.Repositories.CvInformationRepositories;
 using CvAPI.Persistence.Repositories.CvPartRepositories;
+using CvAPI.Persistence.Repositories.EducationRepositories;
 using CvAPI.Persistence.Repositories.GeneralArticleRepositories;
 using CvAPI.Persistence.Repositories.LanguageRepositories;
 using CvAPI.Persistence.Repositories.UserRepositories;
@@ -35,6 +37,9 @@ namespace CvAPI.Persistence
 
             services.AddScoped<IGeneralArticleReadRepository, GeneralArticleReadRepository>();
             services.AddScoped<IGeneralArticleWriteRepository, GeneralArticleWriteRepository>();
+
+            services.AddScoped<IEducationReadRepository, EducationReadRepository>();
+            services.AddScoped<IEducationWriteRepository,EducationWriteRepository>();
         }
         
     }

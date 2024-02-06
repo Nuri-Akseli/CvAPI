@@ -18,5 +18,6 @@ namespace CvAPI.Domain.Entities
         public bool IsContactInfo { get; set; }
 
         public ICollection<GeneralArticle> GeneralArticles { get; set; }
+        public ICollection<Education> Educations { get; set; }
     }
 }
