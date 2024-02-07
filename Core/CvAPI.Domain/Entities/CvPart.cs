@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,5 +20,6 @@ namespace CvAPI.Domain.Entities
 
         public ICollection<GeneralArticle> GeneralArticles { get; set; }
         public ICollection<Education> Educations { get; set; }
+        public ICollection<Project> Projects { get; set; }
     }
 }
