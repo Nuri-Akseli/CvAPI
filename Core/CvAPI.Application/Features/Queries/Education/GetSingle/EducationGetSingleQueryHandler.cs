@@ -27,11 +27,11 @@ namespace CvAPI.Application.Features.Queries.Education.GetSingle
                 Id = education.Id,
                 City = education.City,
                 Department = education.Department,
-                EndDate = education.EndDate.ToString(),
+                EndDate = education.EndDate,
                 IsActive = education.IsActive,
                 CvPartId = education.CvPartId,
                 Order = education.Order,
-                StartDate = education.StartDate.ToString(),
+                StartDate = education.StartDate,
                 Title = education.Title,
                 University = education.University
             };

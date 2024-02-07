@@ -33,8 +33,8 @@ namespace CvAPI.Application.Features.Commands.Education.Update
             if (education == null)
                 throw new BadRequestException("Eğitim Bulunamadı");
 
-            education.StartDate = DateOnly.Parse(request.StartDate);
-            education.EndDate= request.EndDate != null ? DateOnly.Parse(request.EndDate) : null;
+            education.StartDate = request.StartDate;
+            education.EndDate= request.EndDate;
             education.CvPartId=request.CvPartId;
             education.Order = request.Order;
             education.City = request.City;

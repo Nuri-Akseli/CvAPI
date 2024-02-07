@@ -35,8 +35,8 @@ namespace CvAPI.Application.Features.Commands.Education.Create
                 City = request.City,
                 CvPartId = request.CvPartId,
                 Department = request.Department,
-                EndDate = request.EndDate!=null?DateOnly.Parse(request.EndDate):null,
-                StartDate = DateOnly.Parse(request.StartDate),
+                EndDate = request.EndDate,
+                StartDate = request.StartDate,
                 Order = request.Order,
                 University = request.University
             });
