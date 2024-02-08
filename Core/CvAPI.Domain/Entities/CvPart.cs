@@ -21,5 +21,6 @@ namespace CvAPI.Domain.Entities
         public ICollection<GeneralArticle> GeneralArticles { get; set; }
         public ICollection<Education> Educations { get; set; }
         public ICollection<Project> Projects { get; set; }
+        public ICollection<Certificate> Certificates { get; set; }
     }
 }

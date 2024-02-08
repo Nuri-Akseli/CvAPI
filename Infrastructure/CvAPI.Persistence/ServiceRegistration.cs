@@ -1,4 +1,5 @@
-﻿using CvAPI.Application.Repositories.CvInformationRepositories;
+﻿using CvAPI.Application.Repositories.CertificateRepositories;
+using CvAPI.Application.Repositories.CvInformationRepositories;
 using CvAPI.Application.Repositories.CvPartRepositories;
 using CvAPI.Application.Repositories.EducationRepositories;
 using CvAPI.Application.Repositories.GeneralArticleRepositories;
@@ -6,6 +7,7 @@ using CvAPI.Application.Repositories.LanguageRepositories;
 using CvAPI.Application.Repositories.ProjectRepositories;
 using CvAPI.Application.Repositories.UserRepositories;
 using CvAPI.Persistence.Contexts;
+using CvAPI.Persistence.Repositories.CertificateRepositories;
 using CvAPI.Persistence.Repositories.CvInformationRepositories;
 using CvAPI.Persistence.Repositories.CvPartRepositories;
 using CvAPI.Persistence.Repositories.EducationRepositories;
@@ -45,6 +47,9 @@ namespace CvAPI.Persistence
 
             services.AddScoped<IProjectReadRepository, ProjectReadRepository>();
             services.AddScoped<IProjectWriteRepository, ProjectWriteRepository>();
+
+            services.AddScoped<ICertificateReadRepository, CertificateReadRepository>();
+            services.AddScoped<ICertificateWriteRepository,CertificateWriteRepository>();
         }
         
     }
