@@ -17,6 +17,7 @@ namespace CvAPI.Persistence.Contexts
         public DbSet<Education> Educations { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Certificate> Certificates { get; set; }
+        public DbSet<SocialMedia> SocialMedias { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
