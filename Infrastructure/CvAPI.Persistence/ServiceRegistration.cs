@@ -5,6 +5,7 @@ using CvAPI.Application.Repositories.EducationRepositories;
 using CvAPI.Application.Repositories.GeneralArticleRepositories;
 using CvAPI.Application.Repositories.LanguageRepositories;
 using CvAPI.Application.Repositories.ProjectRepositories;
+using CvAPI.Application.Repositories.SkillRepositories;
 using CvAPI.Application.Repositories.SocialMediaRepositories;
 using CvAPI.Application.Repositories.UserRepositories;
 using CvAPI.Persistence.Contexts;
@@ -15,6 +16,7 @@ using CvAPI.Persistence.Repositories.EducationRepositories;
 using CvAPI.Persistence.Repositories.GeneralArticleRepositories;
 using CvAPI.Persistence.Repositories.LanguageRepositories;
 using CvAPI.Persistence.Repositories.ProjectRepositories;
+using CvAPI.Persistence.Repositories.SkillRepositories;
 using CvAPI.Persistence.Repositories.SocialMediaRepositories;
 using CvAPI.Persistence.Repositories.UserRepositories;
 using Microsoft.EntityFrameworkCore;
@@ -55,6 +57,9 @@ namespace CvAPI.Persistence
 
             services.AddScoped<ISocialMediaReadRepository, SocialMediaReadRepository>();
             services.AddScoped<ISocialMediaWriteRepository, SocialMediaWriteRepository>();
+
+            services.AddScoped<ISkillReadRepository, SkillReadRepository>();
+            services.AddScoped<ISkillWriteRepository, SkillWriteRepository>();
         }
         
     }

@@ -23,5 +23,6 @@ namespace CvAPI.Domain.Entities
         public ICollection<Project> Projects { get; set; }
         public ICollection<Certificate> Certificates { get; set; }
         public ICollection<SocialMedia> SocialMedias { get; set; }
+        public ICollection<Skill> Skills { get; set; }
     }
 }
