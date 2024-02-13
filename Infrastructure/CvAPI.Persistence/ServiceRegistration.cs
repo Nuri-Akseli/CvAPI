@@ -8,6 +8,7 @@ using CvAPI.Application.Repositories.ProjectRepositories;
 using CvAPI.Application.Repositories.SkillRepositories;
 using CvAPI.Application.Repositories.SocialMediaRepositories;
 using CvAPI.Application.Repositories.UserRepositories;
+using CvAPI.Application.Repositories.WorkExperienceRepositories;
 using CvAPI.Persistence.Contexts;
 using CvAPI.Persistence.Repositories.CertificateRepositories;
 using CvAPI.Persistence.Repositories.CvInformationRepositories;
@@ -19,6 +20,7 @@ using CvAPI.Persistence.Repositories.ProjectRepositories;
 using CvAPI.Persistence.Repositories.SkillRepositories;
 using CvAPI.Persistence.Repositories.SocialMediaRepositories;
 using CvAPI.Persistence.Repositories.UserRepositories;
+using CvAPI.Persistence.Repositories.WorkExperienceRepositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -60,6 +62,9 @@ namespace CvAPI.Persistence
 
             services.AddScoped<ISkillReadRepository, SkillReadRepository>();
             services.AddScoped<ISkillWriteRepository, SkillWriteRepository>();
+
+            services.AddScoped<IWorkExperienceReadRepositoy, WorkExperienceReadRepository>();
+            services.AddScoped<IWorkExperienceWriteRepository, WorkExperienceWriteRepository>();
         }
         
     }
