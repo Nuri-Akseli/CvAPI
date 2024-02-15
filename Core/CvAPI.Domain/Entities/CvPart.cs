@@ -26,5 +26,6 @@ namespace CvAPI.Domain.Entities
         public ICollection<Skill> Skills { get; set; }
         public ICollection<WorkExperience> WorkExperiences { get; set; }
         public ICollection<Hobby> Hobbies { get; set; }
+        public ICollection<PersonalInformation> PersonalInformations { get; set; }
     }
 }
