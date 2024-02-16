@@ -43,9 +43,9 @@ namespace CvAPI.Application.Features.Commands.CvPart.Update
             if(partCategory==null)
                 throw new BadRequestException("Geçersiz Bölüm Kategorisi");
 
-            Domain.Entities.CvPart cvPart = await _cvPartReadRepository.GetSingleAsync(part => part.CvInformationId == request.CvInformationId && part.Name == request.Name && part.Id!=request.Id && part.PartCategoryId==request.PartCategoryId,false);
+            Domain.Entities.CvPart cvPart = await _cvPartReadRepository.GetSingleAsync(part => part.CvInformationId == request.CvInformationId && part.Id!=request.Id && part.PartCategoryId==request.PartCategoryId,false);
             if (cvPart != null)
-                throw new BadRequestException("Bu Cv için Bu İsimde Bölüm Mevcut");
+                throw new BadRequestException("Bu Cv için Bu Kategoride Bölüm Mevcut");
 
             cvPart = await _cvPartReadRepository.GetSingleAsync(part => part.Id == request.Id);
             (string fileName, string path) icon = new();
