@@ -10,6 +10,8 @@ namespace CvAPI.Domain.Entities
 {
     public class CvPart:BaseEntity
     {
+        public int PartCategoryId { get; set; }
+        public PartCategory PartCategory { get; set; }
         public int CvInformationId { get; set; }
         public CvInformation CvInformation { get; set; }
         public string Name { get; set; }

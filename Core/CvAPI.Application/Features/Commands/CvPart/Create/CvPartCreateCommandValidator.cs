@@ -13,7 +13,6 @@ namespace CvAPI.Application.Features.Commands.CvPart.Create
         {
             RuleFor(cvPart => cvPart.Order)
                 .NotNull()
-                .NotEmpty()
                 .GreaterThanOrEqualTo(0)
                 .WithName("Sıra");
 
@@ -22,6 +21,12 @@ namespace CvAPI.Application.Features.Commands.CvPart.Create
                 .NotNull()
                 .GreaterThan(0)
                 .WithName("Cv Bilgisi");
+
+            RuleFor(cvPart => cvPart.PartCategoryId)
+                .NotEmpty()
+                .NotNull()
+                .GreaterThan(0)
+                .WithName("Cv Bölüm Kategori Id");
 
             RuleFor(cvPart => cvPart.Name)
                 .NotEmpty()

@@ -1,6 +1,7 @@
 ﻿using CvAPI.Application.Abstractions.Storage;
 using CvAPI.Application.Repositories.CvInformationRepositories;
 using CvAPI.Application.Repositories.CvPartRepositories;
+using CvAPI.Application.Repositories.PartCategoryRepositories;
 using MediatR;
 using SendGrid.Helpers.Errors.Model;
 using System;
@@ -17,17 +18,21 @@ namespace CvAPI.Application.Features.Commands.CvPart.Create
         private readonly ICvPartWriteRepository _cvPartWriteRepository;
         private readonly IStorageService _storageService;
         private readonly ICvInformationReadRepository _cvInformationReadRepository;
+        private readonly IPartCategoryReadRepository _partCategoryReadRepository;
+
         public CvPartCreateCommandHandler(
             ICvPartReadRepository cvPartReadRepository,
             ICvPartWriteRepository cvPartWriteRepository,
             IStorageService storageService,
-            ICvInformationReadRepository cvInformationReadRepository
+            ICvInformationReadRepository cvInformationReadRepository,
+            IPartCategoryReadRepository partCategoryReadRepository
             )
         {
             _cvPartReadRepository=cvPartReadRepository;
             _cvPartWriteRepository=cvPartWriteRepository;
             _storageService=storageService;
             _cvInformationReadRepository=cvInformationReadRepository;
+            _partCategoryReadRepository=partCategoryReadRepository;
 
         }
         public async Task<CvPartCreateCommandResponse> Handle(CvPartCreateCommandRequest request, CancellationToken cancellationToken)
@@ -38,7 +43,11 @@ namespace CvAPI.Application.Features.Commands.CvPart.Create
             if (cvInformation == null)
                 throw new BadRequestException("Geçersiz Cv Bilgisi");
 
-            Domain.Entities.CvPart cvPart = await _cvPartReadRepository.GetSingleAsync(part => part.CvInformationId == request.CvInformationId && part.Name==request.Name);
+            Domain.Entities.PartCategory partCategory = await _partCategoryReadRepository.GetByIdAsync(request.PartCategoryId, false);
+            if (partCategory == null)
+                throw new BadRequestException("Geçersiz Bölüm Kategorisi Girişi");
+
+            Domain.Entities.CvPart cvPart = await _cvPartReadRepository.GetSingleAsync(part => part.CvInformationId == request.CvInformationId && part.Name==request.Name && part.PartCategoryId == request.PartCategoryId, false);
             if (cvPart != null)
                 throw new BadRequestException("Bu Cv için Bu İsimde Bölüm Mevcut");
 
@@ -54,7 +63,8 @@ namespace CvAPI.Application.Features.Commands.CvPart.Create
                 IconPath = icon.path != null ? icon.path : null,
                 IsContactInfo = request.IsContactInfo,
                 Name = request.Name,
-                Order = request.Order
+                Order = request.Order,
+                PartCategoryId = request.PartCategoryId
             });
 
             await _cvPartWriteRepository.SaveAsync();

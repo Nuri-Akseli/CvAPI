@@ -3,6 +3,7 @@ using CvAPI.Application.Features.Commands.CvPart.Delete;
 using CvAPI.Application.Features.Commands.CvPart.Update;
 using CvAPI.Application.Features.Commands.CvPart.UpdateActivity;
 using CvAPI.Application.Features.Queries.CvPart.GetAll;
+using CvAPI.Application.Features.Queries.CvPart.GetListByCategoryName;
 using CvAPI.Application.Features.Queries.CvPart.GetSingle;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -55,6 +56,13 @@ namespace CvAPI.API.Controllers
         public async Task<IActionResult> GetSingle([FromQuery]CvPartGetSingleQueryRequest cvPartGetSingle)
         {
             CvPartGetSingleQueryResponse response = await _mediator.Send(cvPartGetSingle);
+            return Ok(response);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetListByCategoryName([FromQuery] CvPartGetListByCategoryNameQueryRequest cvPartGetListByCategoryNameQueryRequest)
+        {
+            CvPartGetListByCategoryNameQueryResponse response = await _mediator.Send(cvPartGetListByCategoryNameQueryRequest);
             return Ok(response);
         }
     }

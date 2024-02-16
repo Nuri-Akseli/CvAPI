@@ -29,6 +29,12 @@ namespace CvAPI.Application.Features.Commands.CvPart.Update
                 .GreaterThan(0)
                 .WithName("Cv Bilgisi");
 
+            RuleFor(cvPart => cvPart.PartCategoryId)
+                .NotEmpty()
+                .NotNull()
+                .GreaterThan(0)
+                .WithName("Cv Kategori Id");
+
             RuleFor(cvPart => cvPart.Name)
                 .NotEmpty()
                 .NotNull()

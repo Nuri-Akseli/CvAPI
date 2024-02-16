@@ -5,6 +5,7 @@ using CvAPI.Application.Repositories.EducationRepositories;
 using CvAPI.Application.Repositories.GeneralArticleRepositories;
 using CvAPI.Application.Repositories.HobbyRepositories;
 using CvAPI.Application.Repositories.LanguageRepositories;
+using CvAPI.Application.Repositories.PartCategoryRepositories;
 using CvAPI.Application.Repositories.PersonalnformationRepositories;
 using CvAPI.Application.Repositories.ProjectRepositories;
 using CvAPI.Application.Repositories.SkillRepositories;
@@ -19,6 +20,7 @@ using CvAPI.Persistence.Repositories.EducationRepositories;
 using CvAPI.Persistence.Repositories.GeneralArticleRepositories;
 using CvAPI.Persistence.Repositories.HobbyRepositories;
 using CvAPI.Persistence.Repositories.LanguageRepositories;
+using CvAPI.Persistence.Repositories.PartCategoryRepositories;
 using CvAPI.Persistence.Repositories.PersonalInformationRepositories;
 using CvAPI.Persistence.Repositories.ProjectRepositories;
 using CvAPI.Persistence.Repositories.SkillRepositories;
@@ -75,6 +77,8 @@ namespace CvAPI.Persistence
 
             services.AddScoped<IPersonalInformationReadRespository, PersonalInformationReadRepository>();
             services.AddScoped<IPersonalInformationWriteRepository,PersonalInformationWriteRepository>();
+
+            services.AddScoped<IPartCategoryReadRepository, PartCategoryReadRepository>();
         }
         
     }
