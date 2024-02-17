@@ -38,7 +38,7 @@ namespace CvAPI.Application.Features.Queries.SocialMedia.GetListByLanguageCode
 
             if (language == null)
                 throw new BadRequestException("Dil Bulunamadı");
-            Domain.Entities.PartCategory partCategory = await _partCategoryReadRepository.GetSingleAsync(part => part.Name == "Kişisel Bilgi");
+            Domain.Entities.PartCategory partCategory = await _partCategoryReadRepository.GetSingleAsync(part => part.Name == "Sosyal Medya");
 
             Domain.Entities.CvPart cvPart = await _cvPartReadRepository.GetSingleAsync(part => part.IsActive == true && part.CvInformation.LanguageId == language.Id && part.PartCategoryId == partCategory.Id, false);
             if (cvPart == null)
