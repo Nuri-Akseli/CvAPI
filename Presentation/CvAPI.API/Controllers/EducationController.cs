@@ -3,6 +3,7 @@ using CvAPI.Application.Features.Commands.Education.Delete;
 using CvAPI.Application.Features.Commands.Education.Update;
 using CvAPI.Application.Features.Commands.Education.UpdateActivity;
 using CvAPI.Application.Features.Queries.Education.GetAll;
+using CvAPI.Application.Features.Queries.Education.GetListByLanguageCode;
 using CvAPI.Application.Features.Queries.Education.GetSingle;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -55,6 +56,13 @@ namespace CvAPI.API.Controllers
         public async Task<IActionResult> GetSingle([FromQuery] EducationGetSingleQueryRequest educationGetSingleQueryRequest)
         {
             EducationGetSingleQueryResponse response = await _mediator.Send(educationGetSingleQueryRequest);
+            return Ok(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetListByLanguageCode(EducationGetListByLanguageCodeQueryRequest educationGetListByLanguageCodeQueryRequest)
+        {
+            EducationGetListByLanguageCodeQueryResponse response = await _mediator.Send(educationGetListByLanguageCodeQueryRequest);
             return Ok(response);
         }
     }

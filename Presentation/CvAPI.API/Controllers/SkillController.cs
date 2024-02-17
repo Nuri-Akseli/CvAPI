@@ -3,6 +3,7 @@ using CvAPI.Application.Features.Commands.Skill.Delete;
 using CvAPI.Application.Features.Commands.Skill.Update;
 using CvAPI.Application.Features.Commands.Skill.UpdateActivity;
 using CvAPI.Application.Features.Queries.Skill.GetAll;
+using CvAPI.Application.Features.Queries.Skill.GetListByLanguageCode;
 using CvAPI.Application.Features.Queries.Skill.GetSingle;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -55,6 +56,13 @@ namespace CvAPI.API.Controllers
         public async Task<IActionResult> GetSingle([FromQuery] SkillGetSingleQueryRequest skillGetSingleQueryRequest)
         {
             SkillGetSingleQueryResponse response = await _mediator.Send(skillGetSingleQueryRequest);
+            return Ok(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetListByLanguageCode(SkillGetListByLanguageCodeQueryRequest skillGetListByLanguageCodeQueryRequest)
+        {
+            SkillGetListByLanguageCodeQueryResponse response = await _mediator.Send(skillGetListByLanguageCodeQueryRequest);
             return Ok(response);
         }
     }

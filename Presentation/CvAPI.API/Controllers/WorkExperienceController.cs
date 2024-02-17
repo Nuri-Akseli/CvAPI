@@ -3,6 +3,7 @@ using CvAPI.Application.Features.Commands.WorkExperience.Delete;
 using CvAPI.Application.Features.Commands.WorkExperience.Update;
 using CvAPI.Application.Features.Commands.WorkExperience.UpdateActivity;
 using CvAPI.Application.Features.Queries.WorkExperience.GetAll;
+using CvAPI.Application.Features.Queries.WorkExperience.GetListByLanguageCode;
 using CvAPI.Application.Features.Queries.WorkExperience.GetSingle;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -58,5 +59,13 @@ namespace CvAPI.API.Controllers
             WorkExperienceGetSingleQueryResponse response = await _mediator.Send(workExperienceGetSingleQueryRequest);
             return Ok(response);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> GetListByLanguageCode(WorkExperienceGetListByLanguageCodeQueryRequest workExperienceGetListByLanguageCodeQueryRequest)
+        {
+            WorkExperienceGetListByLanguageCodeQueryResponse response = await _mediator.Send(workExperienceGetListByLanguageCodeQueryRequest);
+            return Ok(response);
+        }
+
     }
 }

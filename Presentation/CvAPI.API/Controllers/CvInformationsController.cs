@@ -4,6 +4,7 @@ using CvAPI.Application.Features.Commands.CvInformation.Update;
 using CvAPI.Application.Features.Commands.CvInformation.UpdateActivity;
 using CvAPI.Application.Features.Queries.CvInformation.GetAll;
 using CvAPI.Application.Features.Queries.CvInformation.GetSingle;
+using CvAPI.Application.Features.Queries.CvInformation.GetSingleByLanguageCode;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -57,6 +58,13 @@ namespace CvAPI.API.Controllers
         public async Task<IActionResult> GetSingle([FromQuery]CvInformationGetSingleQueryRequest cvInformationGetSingleQueryRequest)
         {
             CvInformationGetSingleQueryResponse response = await _mediator.Send(cvInformationGetSingleQueryRequest);
+            return Ok(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetByLanguageCode(CvInformationGetSingleByLanguageCodeQueryRequest cvInformationGetSingleByLanguageCodeQueryRequest)
+        {
+            CvInformationGetSingleByLanguageCodeQueryResponse response = await _mediator.Send(cvInformationGetSingleByLanguageCodeQueryRequest);
             return Ok(response);
         }
     }

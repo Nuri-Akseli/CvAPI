@@ -3,6 +3,7 @@ using CvAPI.Application.Features.Commands.SocialMedia.Delete;
 using CvAPI.Application.Features.Commands.SocialMedia.Update;
 using CvAPI.Application.Features.Commands.SocialMedia.UpdateActivity;
 using CvAPI.Application.Features.Queries.SocialMedia.GetAll;
+using CvAPI.Application.Features.Queries.SocialMedia.GetListByLanguageCode;
 using CvAPI.Application.Features.Queries.SocialMedia.GetSingle;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -55,6 +56,13 @@ namespace CvAPI.API.Controllers
         public async Task<IActionResult> GetSingle([FromQuery] SocialMediaGetSingleQueryRequest socialMediaGetSingleQueryRequest)
         {
             SocialMediaGetSingleQueryResponse response = await _mediator.Send(socialMediaGetSingleQueryRequest);
+            return Ok(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetListByLanguageCode(SocialMediaGetListByLanguageCodeQueryRequest socialMediaGetListByLanguageCodeQueryRequest)
+        {
+            SocialMediaGetListByLanguageCodeQueryResponse response = await _mediator.Send(socialMediaGetListByLanguageCodeQueryRequest);
             return Ok(response);
         }
     }

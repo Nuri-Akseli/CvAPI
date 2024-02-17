@@ -3,6 +3,7 @@ using CvAPI.Application.Features.Commands.Hobby.Delete;
 using CvAPI.Application.Features.Commands.Hobby.Update;
 using CvAPI.Application.Features.Commands.Hobby.UpdateActivity;
 using CvAPI.Application.Features.Queries.Hobby.GetAll;
+using CvAPI.Application.Features.Queries.Hobby.GetListByLanguageCode;
 using CvAPI.Application.Features.Queries.Hobby.GetSingle;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -57,6 +58,13 @@ namespace CvAPI.API.Controllers
         public async Task<IActionResult> GetSingle([FromQuery] HobbyGetSingleQueryRequest hobbyGetSingleQueryRequest)
         {
             HobbyGetSingleQueryResponse response = await _mediator.Send(hobbyGetSingleQueryRequest);
+            return Ok(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetListByLanguageCode(HobbyGetListByLanguageCodeQueryRequest hobbyGetListByLanguageCodeQueryRequest)
+        {
+            HobbyGetListByLanguageCodeQueryResponse response = await _mediator.Send(hobbyGetListByLanguageCodeQueryRequest);
             return Ok(response);
         }
     }

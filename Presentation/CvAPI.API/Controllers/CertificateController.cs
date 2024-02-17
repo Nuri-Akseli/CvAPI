@@ -3,6 +3,7 @@ using CvAPI.Application.Features.Commands.Certificate.Delete;
 using CvAPI.Application.Features.Commands.Certificate.Update;
 using CvAPI.Application.Features.Commands.Certificate.UpdateActivity;
 using CvAPI.Application.Features.Queries.Certificate.GetAll;
+using CvAPI.Application.Features.Queries.Certificate.GetListByLanguageCode;
 using CvAPI.Application.Features.Queries.Certificate.GetSingle;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -55,6 +56,13 @@ namespace CvAPI.API.Controllers
         public async Task<IActionResult> GetSingle([FromQuery] CertificateGetSingleQueryRequest certificateGetSingleQueryRequest)
         {
             CertificateGetSingleQueryResponse response = await _mediator.Send(certificateGetSingleQueryRequest);
+            return Ok(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetListByLanguageCode(CertificateGetListByLanguageCodeQueryRequest certificateGetListByLanguageCodeQueryRequest)
+        {
+            CertificateGetListByLanguageCodeQueryResponse response = await _mediator.Send(certificateGetListByLanguageCodeQueryRequest);
             return Ok(response);
         }
     }

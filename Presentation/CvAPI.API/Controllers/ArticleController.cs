@@ -4,6 +4,7 @@ using CvAPI.Application.Features.Commands.GeneralArticle.Update;
 using CvAPI.Application.Features.Commands.GeneralArticle.UpdateActivity;
 using CvAPI.Application.Features.Queries.GeneralArticle.GetAll;
 using CvAPI.Application.Features.Queries.GeneralArticle.GetSingle;
+using CvAPI.Application.Features.Queries.GeneralArticle.GetSingleByLanguageCode;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -59,6 +60,13 @@ namespace CvAPI.API.Controllers
         public async Task<IActionResult> GetSingle([FromQuery]GeneralArticleGetSingleQueryRequest generalArticleGetSingleQueryRequest)
         {
             GeneralArticleGetSingleQueryResponse response = await _mediator.Send(generalArticleGetSingleQueryRequest);
+            return Ok(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetByLanguageCode(GeneralArticleGetSingleByLanguageCodeQueryRequest articleGetSingleByLanguageCodeQueryRequest)
+        {
+            GeneralArticleGetSingleByLanguageCodeQueryResponse response = await _mediator.Send(articleGetSingleByLanguageCodeQueryRequest);
             return Ok(response);
         }
     }
