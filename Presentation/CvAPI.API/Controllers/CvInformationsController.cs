@@ -61,8 +61,8 @@ namespace CvAPI.API.Controllers
             return Ok(response);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> GetByLanguageCode(CvInformationGetSingleByLanguageCodeQueryRequest cvInformationGetSingleByLanguageCodeQueryRequest)
+        [HttpGet]
+        public async Task<IActionResult> GetByLanguageCode([FromQuery] CvInformationGetSingleByLanguageCodeQueryRequest cvInformationGetSingleByLanguageCodeQueryRequest)
         {
             CvInformationGetSingleByLanguageCodeQueryResponse response = await _mediator.Send(cvInformationGetSingleByLanguageCodeQueryRequest);
             return Ok(response);

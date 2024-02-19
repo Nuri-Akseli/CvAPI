@@ -59,8 +59,8 @@ namespace CvAPI.API.Controllers
             return Ok(response);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> GetListByLanguageCode(ProjectGetListByLanguageCodeQueryRequest projectGetListByLanguageCodeQueryRequest)
+        [HttpGet]
+        public async Task<IActionResult> GetListByLanguageCode([FromQuery] ProjectGetListByLanguageCodeQueryRequest projectGetListByLanguageCodeQueryRequest)
         {
             ProjectGetListByLanguageCodeQueryResponse response = await _mediator.Send(projectGetListByLanguageCodeQueryRequest);
             return Ok(response);

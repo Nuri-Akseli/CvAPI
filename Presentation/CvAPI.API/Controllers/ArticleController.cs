@@ -63,8 +63,8 @@ namespace CvAPI.API.Controllers
             return Ok(response);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> GetByLanguageCode(GeneralArticleGetSingleByLanguageCodeQueryRequest articleGetSingleByLanguageCodeQueryRequest)
+        [HttpGet]
+        public async Task<IActionResult> GetByLanguageCode([FromQuery]GeneralArticleGetSingleByLanguageCodeQueryRequest articleGetSingleByLanguageCodeQueryRequest)
         {
             GeneralArticleGetSingleByLanguageCodeQueryResponse response = await _mediator.Send(articleGetSingleByLanguageCodeQueryRequest);
             return Ok(response);

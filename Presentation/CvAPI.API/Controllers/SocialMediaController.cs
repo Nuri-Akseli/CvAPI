@@ -59,8 +59,8 @@ namespace CvAPI.API.Controllers
             return Ok(response);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> GetListByLanguageCode(SocialMediaGetListByLanguageCodeQueryRequest socialMediaGetListByLanguageCodeQueryRequest)
+        [HttpGet]
+        public async Task<IActionResult> GetListByLanguageCode([FromQuery] SocialMediaGetListByLanguageCodeQueryRequest socialMediaGetListByLanguageCodeQueryRequest)
         {
             SocialMediaGetListByLanguageCodeQueryResponse response = await _mediator.Send(socialMediaGetListByLanguageCodeQueryRequest);
             return Ok(response);
